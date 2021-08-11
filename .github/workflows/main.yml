@@ -1,0 +1,38 @@
+name: Test Contracts - SecureSons
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  # This workflow contains a single job called "build"
+  compile_and_test:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    container:
+      image: ant4g0nist/chinstrap:latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      # Runs a single command using the runners shell
+      - name: compile
+        uses: ant4g0nist/SecureSons@main
+        with:
+          image: ant4g0nist/chinstrap:latest
+          env: GITHUB_WORKSPACE:/home
+          args: --compile
+
+      # Runs a set of commands using the runners shell
+      - name: test
+        uses: ant4g0nist/SecureSons@main
+        with:
+          image: ant4g0nist/chinstrap:latest
+          env: GITHUB_WORKSPACE:/home
+          args: --test smartpy

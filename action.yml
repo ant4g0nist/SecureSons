@@ -1,0 +1,20 @@
+name: 'SecureSons'
+description: 'Run a command in a new container'
+inputs:
+  image:
+    description: 'Image'
+    required: true
+  options:
+    description: 'Options'
+    required: false
+  run:
+    description: 'Run command in container'
+    required: false
+  env:
+    description: 'change workspace dir'
+    required: false
+    default: /home/
+  
+runs:
+  using: 'docker'
+  image: 'docker://ant4g0nist/chinstrap:latest'
