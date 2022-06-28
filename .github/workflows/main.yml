@@ -23,11 +23,11 @@ jobs:
         with:
           image: ant4g0nist/chinstrap:latest
           env: GITHUB_WORKSPACE:/home
-          args: chinstrap compile -l
+          args: compile -l
 
       - name: test
         uses: ant4g0nist/SecureSons@main
         with:
           image: ant4g0nist/chinstrap:latest
           env: GITHUB_WORKSPACE:/home
-          args: chinstrap test -l
+          args: test -l
